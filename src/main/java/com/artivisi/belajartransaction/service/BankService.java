@@ -21,7 +21,7 @@ public class BankService {
 
     @Transactional
     public void transfer(Rekening asal, Rekening tujuan, BigDecimal nilai, String keterangan) {
-        // log mulai transaksi
+        // log mulai transaksi, jangan ikut rollback kalau transfernya error
         logTransaksiService.logTransferMulai(asal, tujuan, nilai);
 
         // cek saldo
